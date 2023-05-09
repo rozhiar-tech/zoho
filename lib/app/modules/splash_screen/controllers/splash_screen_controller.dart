@@ -6,8 +6,8 @@ class SplashScreenController extends GetxController {
 
   final count = 0.obs;
   void getToHome() async {
-    await Future.delayed(Duration(seconds: 5));
-    Get.offAllNamed('/home');
+    await Future.delayed(Duration(seconds: 15));
+    Get.offAllNamed('/login');
   }
 
   @override

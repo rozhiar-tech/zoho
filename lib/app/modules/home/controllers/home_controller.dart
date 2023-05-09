@@ -2,6 +2,12 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
+  RxString title = 'Home'.obs;
+  RxBool search = false.obs;
+
+  searchIsClicked() {
+    search.value = !search.value;
+  }
 
   final count = 0.obs;
   @override
