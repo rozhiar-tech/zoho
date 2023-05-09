@@ -13,7 +13,7 @@ class SignUpController extends GetxController {
     print(emailController.text);
     print(passwordController.text);
     print(confirmPasswordController.text);
-    Get.offNamed('/home');
+    Get.offNamed('/user-infromation');
   }
 
   final count = 0.obs;

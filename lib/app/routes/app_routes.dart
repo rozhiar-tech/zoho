@@ -12,6 +12,8 @@ abstract class Routes {
   static const CREATE_JOB = _Paths.CREATE_JOB;
   static const VIEW_JOBS = _Paths.VIEW_JOBS;
   static const VIEW_CANDIDATES = _Paths.VIEW_CANDIDATES;
+  static const ALL_JOBS = _Paths.ALL_JOBS;
+  static const SINGLE_JOB = _Paths.SINGLE_JOB;
 }
 
 abstract class _Paths {
@@ -25,4 +27,6 @@ abstract class _Paths {
   static const CREATE_JOB = '/create-job';
   static const VIEW_JOBS = '/view-jobs';
   static const VIEW_CANDIDATES = '/view-candidates';
+  static const ALL_JOBS = '/all-jobs';
+  static const SINGLE_JOB = '/single-job';
 }

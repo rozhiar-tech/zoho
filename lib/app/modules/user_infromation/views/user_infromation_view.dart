@@ -8,17 +8,96 @@ class UserInfromationView extends GetView<UserInfromationController> {
   const UserInfromationView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('UserInfromationView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'UserInfromationView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+    return GetX(
+        init: UserInfromationController(),
+        builder: (controller) {
+          return Scaffold(
+            body: Container(
+              height: Get.height,
+              width: Get.width,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      height: Get.height * 0.4,
+                      width: Get.width,
+                      child: Center(
+                        child: Text(
+                          controller.registerTitle.value,
+                          style: TextStyle(
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                        height: Get.height * 0.6,
+                        width: Get.width,
+                        child: Column(
+                          children: [
+                            Container(
+                              width: Get.width * 0.8,
+                              child: TextFormField(
+                                controller: controller.emailController,
+                                decoration: InputDecoration(
+                                  hintText: 'User Name',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Container(
+                              width: Get.width * 0.8,
+                              child: TextFormField(
+                                controller: controller.passwordController,
+                                decoration: InputDecoration(
+                                  hintText: 'Location',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Container(
+                              width: Get.width * 0.8,
+                              child: Icon(
+                                Icons.photo_library_outlined,
+                                size: 60,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Container(
+                              width: Get.width * 0.8,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  controller.register();
+                                },
+                                child: Text('Register'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xffF6E0BB),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

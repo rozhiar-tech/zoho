@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -95,13 +96,387 @@ class HomeView extends GetView<HomeController> {
                   Container(
                     height: Get.height * 0.44,
                     width: Get.width,
-                    color: Colors.blue,
-                    child: Text(controller.title.value),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            controller.title.value,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xffBAE5F5),
+                                ),
+                                height: Get.height * 0.30,
+                                width: Get.width * 0.5,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: Get.height * 0.1,
+                                      width: Get.width * 0.2,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: Color(0xffF8F4EC),
+                                      ),
+                                      child: Icon(
+                                        Icons.work_outline,
+                                        size: 40,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      '48.4k',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      'Remote Jobs',
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  height: Get.height * 0.14,
+                                  width: Get.width * 0.4,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xffE2D3FE),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: Get.height * 0.06,
+                                          width: Get.width * 0.13,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: Color(0xffF8F4EC),
+                                          ),
+                                          child: Icon(
+                                            Icons.compare_arrows,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            '48.4k',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            'Full Time',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: Get.height * 0.14,
+                                  width: Get.width * 0.4,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xffCCF0C0),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: Get.height * 0.06,
+                                          width: Get.width * 0.13,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: Color(0xffF8F4EC),
+                                          ),
+                                          child: Icon(
+                                            Icons.compare_sharp,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            '48.4k',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            'Part Time',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                   Container(
                     height: Get.height * 0.38,
                     width: Get.width,
-                    color: Colors.green,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 13, vertical: 5),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Recent Jobs',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Spacer(),
+                              TextButton(
+                                onPressed: () {
+                                  Get.toNamed('/all-jobs');
+                                },
+                                child: Text(
+                                  'See All',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: Get.height * 0.30,
+                          width: Get.width,
+                          child: ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              itemCount: 10,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 13, vertical: 5),
+                                  child: Container(
+                                    height: Get.height * 0.16,
+                                    width: Get.width * 0.5,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Color(0xffF8F4EC),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: CircleAvatar(
+                                                radius: 30,
+                                                backgroundImage: AssetImage(
+                                                    'assets/images/google.png'),
+                                              ),
+                                            ),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Product Designer',
+                                                  style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  '10k - 20k/month',
+                                                  style: TextStyle(
+                                                    fontSize: 17,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                height: Get.height * 0.06,
+                                                width: Get.width * 0.13,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  color: Color(0xffE2D3FE),
+                                                ),
+                                                child: Icon(
+                                                  Icons.bookmark_border,
+                                                  size: 30,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 15.0),
+                                              child: Container(
+                                                height: Get.height * 0.03,
+                                                width: Get.width * 0.3,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  color: Color(0xffE2D3FE),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    'Senior ',
+                                                    style: TextStyle(
+                                                      fontSize: 17,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Container(
+                                              height: Get.height * 0.03,
+                                              width: Get.width * 0.3,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                color: Color(0xffE2D3FE),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'Full Time',
+                                                  style: TextStyle(
+                                                    fontSize: 17,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                height: Get.height * 0.03,
+                                                width: Get.width * 0.16,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  color: Color(0xffE2D3FE),
+                                                ),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Get.toNamed('/single-job');
+                                                  },
+                                                  child: Text(
+                                                    'Apply',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    primary: Color(0xffFDE1AA),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }),
+                        ),
+                      ],
+                    ),
                   ),
                 ]),
               ),

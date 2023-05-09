@@ -1,13 +1,8 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
-  RxString title = 'Find Your Job'.obs;
-  RxBool search = false.obs;
-
-  searchIsClicked() {
-    search.value = !search.value;
-  }
+class AllJobsController extends GetxController {
+  //TODO: Implement AllJobsController
+  RxString title = 'Product Designer'.obs;
 
   final count = 0.obs;
   @override

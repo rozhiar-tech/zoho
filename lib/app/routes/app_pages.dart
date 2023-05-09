@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/all_jobs/bindings/all_jobs_binding.dart';
+import '../modules/all_jobs/views/all_jobs_view.dart';
 import '../modules/confirm_email/bindings/confirm_email_binding.dart';
 import '../modules/confirm_email/views/confirm_email_view.dart';
 import '../modules/create_job/bindings/create_job_binding.dart';
@@ -10,6 +12,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/sign_up/bindings/sign_up_binding.dart';
 import '../modules/sign_up/views/sign_up_view.dart';
+import '../modules/single_job/bindings/single_job_binding.dart';
+import '../modules/single_job/views/single_job_view.dart';
 import '../modules/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/splash_screen/views/splash_screen_view.dart';
 import '../modules/user_infromation/bindings/user_infromation_binding.dart';
@@ -71,6 +75,16 @@ class AppPages {
       name: _Paths.VIEW_CANDIDATES,
       page: () => const ViewCandidatesView(),
       binding: ViewCandidatesBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALL_JOBS,
+      page: () => const AllJobsView(),
+      binding: AllJobsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SINGLE_JOB,
+      page: () => const SingleJobView(),
+      binding: SingleJobBinding(),
     ),
   ];
 }
