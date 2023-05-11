@@ -6,6 +6,8 @@ import '../modules/confirm_email/bindings/confirm_email_binding.dart';
 import '../modules/confirm_email/views/confirm_email_view.dart';
 import '../modules/create_job/bindings/create_job_binding.dart';
 import '../modules/create_job/views/create_job_view.dart';
+import '../modules/filter_page/bindings/filter_page_binding.dart';
+import '../modules/filter_page/views/filter_page_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -18,6 +20,8 @@ import '../modules/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/splash_screen/views/splash_screen_view.dart';
 import '../modules/user_infromation/bindings/user_infromation_binding.dart';
 import '../modules/user_infromation/views/user_infromation_view.dart';
+import '../modules/user_profile/bindings/user_profile_binding.dart';
+import '../modules/user_profile/views/user_profile_view.dart';
 import '../modules/view_candidates/bindings/view_candidates_binding.dart';
 import '../modules/view_candidates/views/view_candidates_view.dart';
 import '../modules/view_jobs/bindings/view_jobs_binding.dart';
@@ -85,6 +89,16 @@ class AppPages {
       name: _Paths.SINGLE_JOB,
       page: () => const SingleJobView(),
       binding: SingleJobBinding(),
+    ),
+    GetPage(
+      name: _Paths.FILTER_PAGE,
+      page: () => const FilterPageView(),
+      binding: FilterPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER_PROFILE,
+      page: () => const UserProfileView(),
+      binding: UserProfileBinding(),
     ),
   ];
 }
