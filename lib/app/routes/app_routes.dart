@@ -16,6 +16,8 @@ abstract class Routes {
   static const SINGLE_JOB = _Paths.SINGLE_JOB;
   static const FILTER_PAGE = _Paths.FILTER_PAGE;
   static const USER_PROFILE = _Paths.USER_PROFILE;
+  static const COMPANY_HOME = _Paths.COMPANY_HOME;
+  static const COMPANY_PROFILE = _Paths.COMPANY_PROFILE;
 }
 
 abstract class _Paths {
@@ -33,4 +35,6 @@ abstract class _Paths {
   static const SINGLE_JOB = '/single-job';
   static const FILTER_PAGE = '/filter-page';
   static const USER_PROFILE = '/user-profile';
+  static const COMPANY_HOME = '/company-home';
+  static const COMPANY_PROFILE = '/company-profile';
 }

@@ -2,6 +2,10 @@ import 'package:get/get.dart';
 
 import '../modules/all_jobs/bindings/all_jobs_binding.dart';
 import '../modules/all_jobs/views/all_jobs_view.dart';
+import '../modules/company_home/bindings/company_home_binding.dart';
+import '../modules/company_home/views/company_home_view.dart';
+import '../modules/company_profile/bindings/company_profile_binding.dart';
+import '../modules/company_profile/views/company_profile_view.dart';
 import '../modules/confirm_email/bindings/confirm_email_binding.dart';
 import '../modules/confirm_email/views/confirm_email_view.dart';
 import '../modules/create_job/bindings/create_job_binding.dart';
@@ -99,6 +103,17 @@ class AppPages {
       name: _Paths.USER_PROFILE,
       page: () => const UserProfileView(),
       binding: UserProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.COMPANY_HOME,
+      page: () => const CompanyHomeView(),
+      binding: CompanyHomeBinding(),
+    ),
+    GetPage(
+      transition: Transition.downToUp,
+      name: _Paths.COMPANY_PROFILE,
+      page: () => const CompanyProfileView(),
+      binding: CompanyProfileBinding(),
     ),
   ];
 }

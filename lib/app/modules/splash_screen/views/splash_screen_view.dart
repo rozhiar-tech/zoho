@@ -16,7 +16,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
             return Stack(
               children: [
                 Positioned(
-                  top: 70,
+                  top: 100,
                   left: Get.width * 0.4,
                   child: AnimatedTextKit(
                     animatedTexts: [

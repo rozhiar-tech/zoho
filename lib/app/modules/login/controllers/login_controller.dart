@@ -9,8 +9,12 @@ class LoginController extends GetxController {
   RxString LoginTitle = 'Login'.obs;
 
   login() {
-    print(emailController.text);
-    Get.offNamed('/home');
+    if (emailController.text == 'admin' && passwordController.text == 'admin') {
+      Get.offNamed('/company-home');
+    } else {
+      // Get.snackbar('Error', 'Invalid Credentials');
+      Get.offNamed('/home');
+    }
   }
 
   register() {
