@@ -43,277 +43,324 @@ class FilterPageView extends GetView<FilterPageController> {
                     horizontal: 20,
                     vertical: 26,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Category',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        height: Get.height * 0.08,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            dropdownColor: Colors.white,
-                            menuMaxHeight: Get.height * 0.3,
-                            value: "All",
-                            icon: const Icon(Icons.arrow_downward),
-                            iconSize: 24,
-                            elevation: 16,
-                            style: const TextStyle(color: Colors.black),
-                            onChanged: (String? newValue) {
-                              // controller.selectedCategory.value = newValue!;
-                            },
-                            items: [
-                              'All',
-                              'Category 1',
-                              'Category 2',
-                              'Category 3'
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                  ),
-                                  child: Text(
-                                    value,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                              );
-                            }).toList(),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //Search Bar Container
+                        Container(
+                          height: Get.height * 0.08,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Department',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        height: Get.height * 0.08,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            dropdownColor: Colors.white,
-                            menuMaxHeight: Get.height * 0.3,
-                            value: "All",
-                            icon: const Icon(Icons.arrow_downward),
-                            iconSize: 24,
-                            elevation: 16,
-                            style: const TextStyle(color: Colors.black),
-                            onChanged: (String? newValue) {
-                              // controller.selectedCategory.value = newValue!;
-                            },
-                            items: [
-                              'All',
-                              'Department 1',
-                              'Department 2',
-                              'Department 3'
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                  ),
-                                  child: Text(
-                                    value,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Salary',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          Column(
+                          child: Row(
                             children: [
-                              Text(
-                                "Minimum Salary",
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w600),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                Icons.search,
+                                color: Colors.grey,
                               ),
                               const SizedBox(
-                                height: 10,
+                                width: 10,
                               ),
-                              Text(
-                                controller.minValue.value.toString() + "\$",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
-                          const Spacer(),
-                          Column(
-                            children: [
-                              Text(
-                                "Maximum Salary",
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                controller.maxValue.value.toString() + "\$",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      RangeSlider(
-                        activeColor: Color(0xffBAE5F5),
-                        inactiveColor: Colors.grey,
-                        semanticFormatterCallback: (value) {
-                          return '${value.round()} dollars';
-                        },
-                        values: controller.values,
-                        onChanged: (RangeValues value) {
-                          controller.values = value;
-                          controller.maxValue.value = value.end;
-                          controller.minValue.value = value.start;
-                        },
-                        min: 0,
-                        max: 1000,
-                        divisions: 1000,
-                        labels: RangeLabels(
-                          controller.minValue.value.toString() + "\$",
-                          controller.maxValue.value.toString() + "\$",
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Job Type',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        height: Get.height * 0.08,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            dropdownColor: Colors.white,
-                            menuMaxHeight: Get.height * 0.3,
-                            value: "All",
-                            icon: const Icon(Icons.arrow_downward),
-                            iconSize: 24,
-                            elevation: 16,
-                            style: const TextStyle(color: Colors.black),
-                            onChanged: (String? newValue) {
-                              // controller.selectedCategory.value = newValue!;
-                            },
-                            items: ['All', 'Remote', 'Part Time', 'Full Time']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                  ),
-                                  child: Text(
-                                    value,
-                                    style: TextStyle(
-                                        color: Colors.black,
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Search',
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),
-                              );
-                            }).toList(),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
+                        const SizedBox(
+                          height: 20,
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Apply Filters'),
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xff222222),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                        Text(
+                          'Category',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: Get.height * 0.08,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              dropdownColor: Colors.white,
+                              menuMaxHeight: Get.height * 0.3,
+                              value: "All",
+                              icon: const Icon(Icons.arrow_downward),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (String? newValue) {
+                                // controller.selectedCategory.value = newValue!;
+                              },
+                              items: [
+                                'All',
+                                'Category 1',
+                                'Category 2',
+                                'Category 3'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
                             ),
-                            minimumSize:
-                                Size(Get.width * 0.9, Get.height * 0.07),
                           ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Department',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: Get.height * 0.08,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              dropdownColor: Colors.white,
+                              menuMaxHeight: Get.height * 0.3,
+                              value: "All",
+                              icon: const Icon(Icons.arrow_downward),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (String? newValue) {
+                                // controller.selectedCategory.value = newValue!;
+                              },
+                              items: [
+                                'All',
+                                'Department 1',
+                                'Department 2',
+                                'Department 3'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Salary',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  "Minimum Salary",
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  controller.minValue.value.toString() + "\$",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                            const Spacer(),
+                            Column(
+                              children: [
+                                Text(
+                                  "Maximum Salary",
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  controller.maxValue.value.toString() + "\$",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        RangeSlider(
+                          activeColor: Color(0xffBAE5F5),
+                          inactiveColor: Colors.grey,
+                          semanticFormatterCallback: (value) {
+                            return '${value.round()} dollars';
+                          },
+                          values: controller.values,
+                          onChanged: (RangeValues value) {
+                            controller.values = value;
+                            controller.maxValue.value = value.end;
+                            controller.minValue.value = value.start;
+                          },
+                          min: 0,
+                          max: 1000,
+                          divisions: 1000,
+                          labels: RangeLabels(
+                            controller.minValue.value.toString() + "\$",
+                            controller.maxValue.value.toString() + "\$",
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Job Type',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: Get.height * 0.08,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              dropdownColor: Colors.white,
+                              menuMaxHeight: Get.height * 0.3,
+                              value: "All",
+                              icon: const Icon(Icons.arrow_downward),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (String? newValue) {
+                                // controller.selectedCategory.value = newValue!;
+                              },
+                              items: [
+                                'All',
+                                'Remote',
+                                'Part Time',
+                                'Full Time'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Apply Filters'),
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xff222222),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              minimumSize:
+                                  Size(Get.width * 0.9, Get.height * 0.07),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ));

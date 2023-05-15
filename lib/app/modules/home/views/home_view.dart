@@ -13,6 +13,75 @@ class HomeView extends GetView<HomeController> {
           init: HomeController(),
           builder: (controller) {
             return Scaffold(
+                appBar: PreferredSize(
+                  preferredSize: const Size.fromHeight(100),
+                  child: AppBar(
+                      iconTheme: const IconThemeData(
+                        color: Color(0xff000000),
+                      ),
+                      elevation: 0,
+                      backgroundColor: const Color(0xffF8F8F8),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Get.toNamed('/filter-page');
+                          },
+                          child: const Icon(
+                            Icons.search,
+                            color: Colors.black,
+                            size: 30,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Get.toNamed('/user-profile');
+                          },
+                          child: const CircleAvatar(
+                            radius: 20,
+                            backgroundImage:
+                                AssetImage('assets/images/splash.jpg'),
+                          ),
+                        ),
+                      ]),
+                ),
+                drawer: Drawer(
+                  // backgroundColor: Colors.b,
+                  child: ListView(
+                    children: [
+                      const DrawerHeader(
+                        decoration: BoxDecoration(
+                          color: Color(0xffE2D3FE),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'User Name',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Item 1'),
+                        onTap: () {
+                          // Update the state of the app.
+                          // ...
+                        },
+                      ),
+                      ListTile(
+                        title: const Text('Item 2'),
+                        onTap: () {
+                          // Update the state of the app.
+                          // ...
+                        },
+                      ),
+                    ],
+                  ),
+                ),
                 backgroundColor: const Color(0xffF8F8F8),
                 body: Container(
                   height: Get.height,
@@ -20,85 +89,7 @@ class HomeView extends GetView<HomeController> {
                   child: SingleChildScrollView(
                     child: Column(children: [
                       Container(
-                        height: Get.height * 0.12,
-                        width: Get.width,
-                        child: Container(
-                          height: Get.height * 0.33,
-                          width: Get.width * 0.5,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                child: TextButton(
-                                  onPressed: () {
-                                    Get.toNamed('/filter-page');
-                                  },
-                                  child: Image.asset(
-                                    'assets/images/filter.png',
-                                    height: Get.height * 0.08,
-                                    width: Get.width * 0.08,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              AnimatedContainer(
-                                duration: const Duration(milliseconds: 700),
-                                height: Get.height * 0.05,
-                                width: Get.width * 0.5,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: const Color(0xffF8F4EC),
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: 'Search here...'),
-                                  ),
-                                ),
-                              ),
-                              // : Container(
-                              //     height: Get.height * 0.05,
-                              //     width: Get.width * 0.09,
-                              //     decoration: BoxDecoration(
-                              //       borderRadius: BorderRadius.circular(50),
-                              //       // color: Color(0xffF8F4EC),
-                              //     ),
-                              //     child: Center(
-                              //       child: IconButton(
-                              //           onPressed: () {
-                              //             controller.searchIsClicked();
-                              //           },
-                              //           icon: Icon(Icons.search)),
-                              //     ),
-                              //   ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 10),
-                                child: TextButton(
-                                  onPressed: () {
-                                    Get.toNamed('/user-profile');
-                                  },
-                                  child: const CircleAvatar(
-                                    radius: 30,
-                                    backgroundImage:
-                                        AssetImage('assets/images/splash.jpg'),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: Get.height * 0.44,
+                        height: Get.height * 0.39,
                         width: Get.width,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,7 +213,7 @@ class HomeView extends GetView<HomeController> {
                                       height: 10,
                                     ),
                                     Container(
-                                      height: Get.height * 0.14,
+                                      height: Get.height * 0.12,
                                       width: Get.width * 0.4,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
@@ -388,7 +379,8 @@ class HomeView extends GetView<HomeController> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               50),
-                                                      color: const Color(0xffE2D3FE),
+                                                      color: const Color(
+                                                          0xffE2D3FE),
                                                     ),
                                                     child: const Icon(
                                                       Icons.bookmark_border,
@@ -414,7 +406,8 @@ class HomeView extends GetView<HomeController> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               50),
-                                                      color: const Color(0xffE2D3FE),
+                                                      color: const Color(
+                                                          0xffE2D3FE),
                                                     ),
                                                     child: const Center(
                                                       child: Text(
@@ -437,7 +430,8 @@ class HomeView extends GetView<HomeController> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             50),
-                                                    color: const Color(0xffE2D3FE),
+                                                    color:
+                                                        const Color(0xffE2D3FE),
                                                   ),
                                                   child: const Center(
                                                     child: Text(
@@ -460,7 +454,8 @@ class HomeView extends GetView<HomeController> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               50),
-                                                      color: const Color(0xffE2D3FE),
+                                                      color: const Color(
+                                                          0xffE2D3FE),
                                                     ),
                                                     child: ElevatedButton(
                                                       onPressed: () {
@@ -476,8 +471,8 @@ class HomeView extends GetView<HomeController> {
                                                       ),
                                                       style: ElevatedButton
                                                           .styleFrom(
-                                                        primary:
-                                                            const Color(0xffFDE1AA),
+                                                        primary: const Color(
+                                                            0xffFDE1AA),
                                                         shape:
                                                             RoundedRectangleBorder(
                                                           borderRadius:

@@ -4,6 +4,11 @@ class HomeController extends GetxController {
   //TODO: Implement HomeController
   RxString title = 'Find Your Job'.obs;
   RxBool search = false.obs;
+  RxBool isDrawerToogle = false.obs;
+
+  void drawerToogle() {
+    isDrawerToogle.value = !isDrawerToogle.value;
+  }
 
   searchIsClicked() {
     search.value = !search.value;

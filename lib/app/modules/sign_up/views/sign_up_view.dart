@@ -87,8 +87,8 @@ class SignUpView extends GetView<SignUpController> {
                             Container(
                               width: Get.width * 0.8,
                               child: ElevatedButton(
-                                onPressed: () {
-                                  controller.register();
+                                onPressed: () async {
+                                  await controller.register();
                                 },
                                 child: Text('Register'),
                                 style: ElevatedButton.styleFrom(
