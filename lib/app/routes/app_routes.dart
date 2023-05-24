@@ -18,6 +18,8 @@ abstract class Routes {
   static const USER_PROFILE = _Paths.USER_PROFILE;
   static const COMPANY_HOME = _Paths.COMPANY_HOME;
   static const COMPANY_PROFILE = _Paths.COMPANY_PROFILE;
+  static const APPLY_SCREEN = _Paths.APPLY_SCREEN;
+  static const SETTINGS = _Paths.SETTINGS;
 }
 
 abstract class _Paths {
@@ -37,4 +39,6 @@ abstract class _Paths {
   static const USER_PROFILE = '/user-profile';
   static const COMPANY_HOME = '/company-home';
   static const COMPANY_PROFILE = '/company-profile';
+  static const APPLY_SCREEN = '/apply-screen';
+  static const SETTINGS = '/settings';
 }

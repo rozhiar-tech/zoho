@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -66,19 +68,57 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       ListTile(
-                        title: const Text('Item 1'),
+                        leading: Icon(Icons.home),
+                        title: Text('Home'),
                         onTap: () {
-                          // Update the state of the app.
-                          // ...
+                          Get.back();
                         },
                       ),
                       ListTile(
-                        title: const Text('Item 2'),
+                        leading: Icon(Icons.person),
+                        title: Text('Profile'),
                         onTap: () {
-                          // Update the state of the app.
-                          // ...
+                          Get.toNamed('/user-profile');
                         },
                       ),
+                      ListTile(
+                        leading: Icon(Icons.settings),
+                        title: Text('Settings'),
+                        onTap: () {
+                          Get.toNamed('/settings');
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.logout),
+                        title: Text('Logout'),
+                        onTap: () {
+                          Get.defaultDialog(
+                            title: 'Logout',
+                            middleText: 'Are you sure you want to logout?',
+                            textConfirm: 'Yes',
+                            textCancel: 'No',
+                            confirmTextColor: Colors.white,
+                            buttonColor: Colors.black,
+                            onConfirm: () async {
+                              await Firebase.initializeApp();
+                              await FirebaseAuth.instance.signOut();
+                              Get.offAllNamed('/login');
+                            },
+                            onCancel: () {
+                              Get.back();
+                            },
+                          );
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.sunny),
+                        title: Text('Dark Mode'),
+                        onTap: () {
+                          Get.changeThemeMode(Get.isDarkMode
+                              ? ThemeMode.light
+                              : ThemeMode.dark);
+                        },
+                      )
                     ],
                   ),
                 ),

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/all_jobs/bindings/all_jobs_binding.dart';
 import '../modules/all_jobs/views/all_jobs_view.dart';
+import '../modules/apply_screen/bindings/apply_screen_binding.dart';
+import '../modules/apply_screen/views/apply_screen_view.dart';
 import '../modules/company_home/bindings/company_home_binding.dart';
 import '../modules/company_home/views/company_home_view.dart';
 import '../modules/company_profile/bindings/company_profile_binding.dart';
@@ -16,6 +18,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
 import '../modules/sign_up/bindings/sign_up_binding.dart';
 import '../modules/sign_up/views/sign_up_view.dart';
 import '../modules/single_job/bindings/single_job_binding.dart';
@@ -114,6 +118,16 @@ class AppPages {
       name: _Paths.COMPANY_PROFILE,
       page: () => const CompanyProfileView(),
       binding: CompanyProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.APPLY_SCREEN,
+      page: () => const ApplyScreenView(),
+      binding: ApplyScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => const SettingsView(),
+      binding: SettingsBinding(),
     ),
   ];
 }

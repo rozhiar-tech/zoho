@@ -1,13 +1,7 @@
 import 'package:get/get.dart';
 
-class SingleJobController extends GetxController {
-  //TODO: Implement SingleJobController
-
-  RxString SingleJobTitle = 'Google'.obs;
-
-  applyJob() {
-    Get.offNamed('/apply-screen');
-  }
+class SettingsController extends GetxController {
+  //TODO: Implement SettingsController
 
   final count = 0.obs;
   @override
