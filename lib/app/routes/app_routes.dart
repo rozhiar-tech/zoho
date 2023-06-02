@@ -20,6 +20,7 @@ abstract class Routes {
   static const COMPANY_PROFILE = _Paths.COMPANY_PROFILE;
   static const APPLY_SCREEN = _Paths.APPLY_SCREEN;
   static const SETTINGS = _Paths.SETTINGS;
+  static const FLITERED_JOBS = _Paths.FLITERED_JOBS;
 }
 
 abstract class _Paths {
@@ -41,4 +42,5 @@ abstract class _Paths {
   static const COMPANY_PROFILE = '/company-profile';
   static const APPLY_SCREEN = '/apply-screen';
   static const SETTINGS = '/settings';
+  static const FLITERED_JOBS = '/flitered-jobs';
 }

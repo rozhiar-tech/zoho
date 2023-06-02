@@ -96,7 +96,7 @@ class HomeView extends GetView<HomeController> {
                         textCancel: 'No',
                         confirmTextColor: Colors.white,
                         buttonColor: Colors.black,
-                        onConfirm:controller.logout,
+                        onConfirm: controller.logout,
                         onCancel: () {
                           Get.back();
                         },
@@ -107,7 +107,8 @@ class HomeView extends GetView<HomeController> {
                     leading: Icon(Icons.sunny),
                     title: Text('Dark Mode'),
                     onTap: () {
-                      Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+                      Get.changeThemeMode(
+                          Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
                     },
                   )
                 ],
@@ -202,7 +203,8 @@ class HomeView extends GetView<HomeController> {
                                           height: Get.height * 0.06,
                                           width: Get.width * 0.13,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(50),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
                                             color: const Color(0xffF8F4EC),
                                           ),
                                           child: const Icon(
@@ -212,10 +214,12 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                       ),
                                       Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            controller.fulltimeJobs.value.toString(),
+                                            controller.fulltimeJobs.value
+                                                .toString(),
                                             style: const TextStyle(
                                               fontSize: 17,
                                               fontWeight: FontWeight.bold,
@@ -254,7 +258,8 @@ class HomeView extends GetView<HomeController> {
                                           height: Get.height * 0.06,
                                           width: Get.width * 0.13,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(50),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
                                             color: const Color(0xffF8F4EC),
                                           ),
                                           child: const Icon(
@@ -264,10 +269,12 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                       ),
                                       Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            controller.parttimeJobs.value.toString(),
+                                            controller.parttimeJobs.value
+                                                .toString(),
                                             style: const TextStyle(
                                               fontSize: 17,
                                               fontWeight: FontWeight.bold,
@@ -301,7 +308,8 @@ class HomeView extends GetView<HomeController> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 13, vertical: 5),
                           child: Row(
                             children: [
                               const Text(
@@ -335,7 +343,8 @@ class HomeView extends GetView<HomeController> {
                             itemCount: controller.jobs.length,
                             itemBuilder: (context, index) {
                               return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 13, vertical: 5),
                                 child: Container(
                                   height: Get.height * 0.16,
                                   width: Get.width * 0.5,
@@ -352,21 +361,28 @@ class HomeView extends GetView<HomeController> {
                                             padding: const EdgeInsets.all(8.0),
                                             child: GestureDetector(
                                               onTap: () {
-                                                controller.companyDetails(index);
+                                                controller
+                                                    .companyDetails(index);
                                               },
                                               child: CircleAvatar(
                                                 radius: 30,
-                                                backgroundImage: NetworkImage(controller.companies[index].logo.toString()), //get the company image
+                                                backgroundImage: NetworkImage(
+                                                    controller
+                                                        .companies[index].logo
+                                                        .toString()), //get the company image
                                                 // backgroundImage: AssetImage('assets/images/google.png'),
                                               ),
                                             ),
                                           ),
                                           Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                controller.jobs[index].title.toString(),
+                                                controller.jobs[index].title
+                                                    .toString(),
                                                 style: const TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold,
@@ -376,7 +392,8 @@ class HomeView extends GetView<HomeController> {
                                                 height: 10,
                                               ),
                                               Text(
-                                                controller.jobs[index].type.toString(),
+                                                controller.jobs[index].type
+                                                    .toString(),
                                                 style: const TextStyle(
                                                   fontSize: 17,
                                                   color: Colors.grey,
@@ -391,7 +408,8 @@ class HomeView extends GetView<HomeController> {
                                               height: Get.height * 0.06,
                                               width: Get.width * 0.13,
                                               decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(50),
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
                                                 color: const Color(0xffE2D3FE),
                                               ),
                                               child: const Icon(
@@ -408,18 +426,23 @@ class HomeView extends GetView<HomeController> {
                                       Row(
                                         children: [
                                           Padding(
-                                            padding: const EdgeInsets.only(left: 15.0),
+                                            padding: const EdgeInsets.only(
+                                                left: 15.0),
                                             child: Container(
                                               height: Get.height * 0.03,
                                               // width: Get.width * 0.16,
-                                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 10),
                                               decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(50),
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
                                                 color: const Color(0xffE2D3FE),
                                               ),
                                               child: Center(
                                                 child: Text(
-                                                  controller.jobs[index].gender.toString(),
+                                                  controller.jobs[index].gender
+                                                      .toString(),
                                                   style: const TextStyle(
                                                     fontSize: 17,
                                                     color: Colors.black,
@@ -435,7 +458,8 @@ class HomeView extends GetView<HomeController> {
                                             height: Get.height * 0.03,
                                             width: Get.width * 0.4,
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(50),
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
                                               color: const Color(0xffE2D3FE),
                                             ),
                                             child: Center(
@@ -456,18 +480,26 @@ class HomeView extends GetView<HomeController> {
                                               // width: Get.width * 0.16,
                                               // padding: const EdgeInsets.symmetric(horizontal: 10),
                                               decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(50),
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
                                                 color: const Color(0xffE2D3FE),
                                               ),
                                               child: ElevatedButton(
                                                 onPressed: () {
-                                                  controller.goToJobDetails(index);
+                                                  controller
+                                                      .goToJobDetails(index);
                                                 },
                                                 style: ElevatedButton.styleFrom(
-                                                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                                                  backgroundColor: Color.fromARGB(255, 248, 206, 122),
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10),
+                                                  backgroundColor:
+                                                      Color.fromARGB(
+                                                          255, 248, 206, 122),
                                                   shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(8),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
                                                   ),
                                                 ),
                                                 child: const Text(

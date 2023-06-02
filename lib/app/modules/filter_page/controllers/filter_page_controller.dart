@@ -8,6 +8,19 @@ class FilterPageController extends GetxController {
   RangeValues values = RangeValues(0, 100);
   RxDouble minValue = 0.0.obs;
   RxDouble maxValue = 100.0.obs;
+  RxString selectedCategory = 'All'.obs;
+  RxString selectedDepartment = 'All'.obs;
+  RxString selectedJobType = 'All'.obs;
+
+  getToFilteredJobs(selectedCategory, selectedDepartment, selectedJobType) {
+    Get.toNamed('/flitered-jobs', arguments: [
+      selectedCategory,
+      selectedDepartment,
+      selectedJobType,
+      minValue.value,
+      maxValue.value
+    ]);
+  }
 
   @override
   void onInit() {

@@ -109,13 +109,13 @@ class FilterPageView extends GetView<FilterPageController> {
                             child: DropdownButton<String>(
                               dropdownColor: Colors.white,
                               menuMaxHeight: Get.height * 0.3,
-                              value: "All",
+                              value: controller.selectedCategory.value,
                               icon: const Icon(Icons.arrow_downward),
                               iconSize: 24,
                               elevation: 16,
                               style: const TextStyle(color: Colors.black),
                               onChanged: (String? newValue) {
-                                // controller.selectedCategory.value = newValue!;
+                                controller.selectedCategory.value = newValue!;
                               },
                               items: [
                                 'All',
@@ -166,13 +166,15 @@ class FilterPageView extends GetView<FilterPageController> {
                             child: DropdownButton<String>(
                               dropdownColor: Colors.white,
                               menuMaxHeight: Get.height * 0.3,
-                              value: "All",
+                              value: controller.selectedDepartment.value,
                               icon: const Icon(Icons.arrow_downward),
                               iconSize: 24,
                               elevation: 16,
                               style: const TextStyle(color: Colors.black),
                               onChanged: (String? newValue) {
                                 // controller.selectedCategory.value = newValue!;
+
+                                controller.selectedDepartment.value = newValue!;
                               },
                               items: [
                                 'All',
@@ -306,13 +308,14 @@ class FilterPageView extends GetView<FilterPageController> {
                             child: DropdownButton<String>(
                               dropdownColor: Colors.white,
                               menuMaxHeight: Get.height * 0.3,
-                              value: "All",
+                              value: controller.selectedJobType.value,
                               icon: const Icon(Icons.arrow_downward),
                               iconSize: 24,
                               elevation: 16,
                               style: const TextStyle(color: Colors.black),
                               onChanged: (String? newValue) {
                                 // controller.selectedCategory.value = newValue!;
+                                controller.selectedJobType.value = newValue!;
                               },
                               items: [
                                 'All',
@@ -347,7 +350,13 @@ class FilterPageView extends GetView<FilterPageController> {
                             horizontal: 20,
                           ),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.getToFilteredJobs(
+                                controller.selectedCategory.value,
+                                controller.selectedDepartment.value,
+                                controller.selectedJobType.value,
+                              );
+                            },
                             child: Text('Apply Filters'),
                             style: ElevatedButton.styleFrom(
                               primary: Color(0xff222222),

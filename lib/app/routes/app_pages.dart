@@ -14,6 +14,8 @@ import '../modules/create_job/bindings/create_job_binding.dart';
 import '../modules/create_job/views/create_job_view.dart';
 import '../modules/filter_page/bindings/filter_page_binding.dart';
 import '../modules/filter_page/views/filter_page_view.dart';
+import '../modules/flitered_jobs/bindings/flitered_jobs_binding.dart';
+import '../modules/flitered_jobs/views/flitered_jobs_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -128,6 +130,11 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => const SettingsView(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.FLITERED_JOBS,
+      page: () => const FliteredJobsView(),
+      binding: FliteredJobsBinding(),
     ),
   ];
 }
