@@ -1,18 +1,23 @@
 import 'package:get/get.dart';
+import 'package:zoho/app/data/models/company_model.dart';
+import 'package:zoho/app/data/models/job_model_model.dart';
 
 class SingleJobController extends GetxController {
-  //TODO: Implement SingleJobController
+  Rx<JobModel> job = JobModel().obs;
+  Rx<CompanyModel> company = CompanyModel().obs;
 
-  RxString SingleJobTitle = 'Google'.obs;
+  RxString pageTitle = 'Google'.obs;
 
   applyJob() {
-    Get.offNamed('/apply-screen');
+    Get.toNamed('/apply-screen', arguments: [job.value, company.value]);
   }
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    job.value = Get.arguments[0];
+    company.value = Get.arguments[1];
+    pageTitle.value = job.value.title.toString();
   }
 
   @override
@@ -24,6 +29,4 @@ class SingleJobController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

@@ -9,103 +9,105 @@ class SignUpView extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     return GetX(
-        init: SignUpController(),
-        builder: (controller) {
-          return Scaffold(
-            body: Container(
-              height: Get.height,
-              width: Get.width,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      height: Get.height * 0.4,
-                      width: Get.width,
-                      child: Center(
-                        child: Text(
-                          controller.registerTitle.value,
-                          style: TextStyle(
-                            fontSize: 32.0,
-                            fontWeight: FontWeight.bold,
-                          ),
+      init: SignUpController(),
+      builder: (controller) {
+        return Scaffold(
+          body: Container(
+            height: Get.height,
+            width: Get.width,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    height: Get.height * 0.4,
+                    width: Get.width,
+                    child: Center(
+                      child: Text(
+                        controller.registerTitle.value,
+                        style: TextStyle(
+                          fontSize: 32.0,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    Container(
-                        height: Get.height * 0.6,
-                        width: Get.width,
-                        child: Column(
-                          children: [
-                            Container(
-                              width: Get.width * 0.8,
-                              child: TextFormField(
-                                controller: controller.emailController,
-                                decoration: InputDecoration(
-                                  hintText: 'Email',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ),
+                  ),
+                  Container(
+                    height: Get.height * 0.6,
+                    width: Get.width,
+                    child: Column(
+                      children: [
+                        Container(
+                          width: Get.width * 0.8,
+                          child: TextFormField(
+                            controller: controller.emailController,
+                            decoration: InputDecoration(
+                              hintText: 'Email',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            Container(
-                              width: Get.width * 0.8,
-                              child: TextFormField(
-                                controller: controller.passwordController,
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  hintText: 'Password',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Container(
+                          width: Get.width * 0.8,
+                          child: TextFormField(
+                            controller: controller.passwordController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              hintText: 'Password',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            Container(
-                              width: Get.width * 0.8,
-                              child: TextFormField(
-                                controller:
-                                    controller.confirmPasswordController,
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  hintText: 'Confirm Password',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Container(
+                          width: Get.width * 0.8,
+                          child: TextFormField(
+                            controller: controller.confirmPasswordController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              hintText: 'Confirm Password',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            Container(
-                              width: Get.width * 0.8,
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  await controller.register();
-                                },
-                                child: Text('Register'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffF6E0BB),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Container(
+                          width: Get.width * 0.8,
+                          height: 50.0,
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              await controller.register();
+                            },
+                            child: Text('Register'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 255, 189, 74),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
-                          ],
-                        )),
-                  ],
-                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

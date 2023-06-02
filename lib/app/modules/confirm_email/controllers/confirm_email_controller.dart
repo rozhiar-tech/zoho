@@ -1,50 +1,64 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:zoho/app/routes/app_pages.dart';
 
 class ConfirmEmailController extends GetxController {
-  //TODO: Implement ConfirmEmailController
+  var email;
+  var password;
+
   late Timer timer;
-  RxString confirmEmailTitle =
-      'Please check your email to verify your account'.obs;
+  RxString confirmEmailTitle = 'Please check your email to verify your account'.obs;
 
   Future verifyEmail() async {
+    // Get.offAllNamed(Routes.USER_INFROMATION, arguments: {'email': email, 'password': password});
+    // return;
+
     User? user = FirebaseAuth.instance.currentUser;
     await user!.reload();
     if (user.emailVerified) {
-      print("verified");
-      Get.snackbar('Success', 'Email verified successfully',
-          snackPosition: SnackPosition.BOTTOM);
-      Get.offAllNamed('/login');
+      Get.snackbar(
+        'Success',
+        'Email verified successfully',
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 2),
+        backgroundColor: Colors.green,
+      );
+      Get.toNamed(Routes.USER_INFROMATION, arguments: {'email': email, 'password': password});
     } else {
-      Get.snackbar('Error', 'Please verify your email',
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', 'Please verify your email', snackPosition: SnackPosition.BOTTOM);
     }
   }
 
-  final count = 0.obs;
+  // create resendEmail function
+  Future resendEmail() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    await user!.reload();
+    user.sendEmailVerification();
+    Get.snackbar(
+      'Email sent successfully',
+      'Check your inbox or your spam folder and verify the email',
+      snackPosition: SnackPosition.BOTTOM,
+      duration: const Duration(seconds: 2),  
+    );
+  }
 
   @override
   void onInit() {
-    User? user = FirebaseAuth.instance.currentUser;
-    user!.reload();
-    user.sendEmailVerification();
-    timer = Timer.periodic(Duration(seconds: 5), (timer) {});
     super.onInit();
+    email = Get.arguments['email'];
+    password = Get.arguments['password'];
   }
 
   @override
   void dispose() {
-    timer.cancel();
     super.dispose();
   }
 
   @override
   void onReady() async {
-    timer = Timer.periodic(Duration(seconds: 5), (timer) {
-      // print("hey");
-    });
     super.onReady();
   }
 
@@ -52,6 +66,4 @@ class ConfirmEmailController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

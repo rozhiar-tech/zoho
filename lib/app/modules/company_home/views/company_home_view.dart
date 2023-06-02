@@ -13,8 +13,8 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
         builder: (controller) {
           return Scaffold(
               appBar: AppBar(
-                title: Text(
-                  'Company',
+                title: const Text(
+                  'Dashboard',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
@@ -40,8 +40,8 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              controller.title.value,
-                              style: TextStyle(
+                              controller.company.value.username.toString(),
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -54,7 +54,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Color(0xffBAE5F5),
+                                    color: const Color(0xffBAE5F5),
                                   ),
                                   height: Get.height * 0.27,
                                   width: Get.width * 0.5,
@@ -65,8 +65,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                         height: Get.height * 0.09,
                                         width: Get.width * 0.2,
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
+                                          borderRadius: BorderRadius.circular(50),
                                           color: const Color(0xffF8F4EC),
                                         ),
                                         child: const Icon(
@@ -77,9 +76,9 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      const Text(
-                                        '48.4k',
-                                        style: TextStyle(
+                                      Text(
+                                        controller.jobsPosted.toString(),
+                                        style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -108,45 +107,31 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                       color: Color(0xffE2D3FE),
                                     ),
                                     child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            height: Get.height * 0.06,
-                                            width: Get.width * 0.13,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                              color: Color(0xffF8F4EC),
-                                            ),
-                                            child: const Icon(
-                                              Icons.compare_arrows,
-                                              size: 30,
-                                            ),
+                                        Center(
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                controller.candidatesApplied.toString(),
+                                                style: const TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              const Text(
+                                                'Candidates Applied',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: const [
-                                            Text(
-                                              '48.4k',
-                                              style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              'Candidates Applied',
-                                              style: TextStyle(
-                                                fontSize: 9,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                          ],
                                         )
                                       ],
                                     ),
@@ -169,34 +154,32 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                             height: Get.height * 0.06,
                                             width: Get.width * 0.13,
                                             decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
+                                              borderRadius: BorderRadius.circular(50),
                                               color: Color(0xffF8F4EC),
                                             ),
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.compare_sharp,
                                               size: 30,
                                             ),
                                           ),
                                         ),
                                         Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              '48.4k',
-                                              style: TextStyle(
-                                                fontSize: 17,
+                                              controller.fullTime.toString(),
+                                              style: const TextStyle(
+                                                fontSize: 22,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
-                                            Text(
-                                              'Employees Hired',
+                                            const Text(
+                                              'Full time jobs',
                                               style: TextStyle(
-                                                fontSize: 9,
+                                                fontSize: 12,
                                                 color: Colors.grey,
                                               ),
                                             ),
@@ -232,9 +215,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                               height: 10,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                Get.toNamed('/create-job');
-                              },
+                              onTap: controller.goToCreateJob,
                               child: Container(
                                 height: Get.height * 0.1,
                                 width: Get.width,
@@ -250,8 +231,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                         height: Get.height * 0.06,
                                         width: Get.width * 0.13,
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
+                                          borderRadius: BorderRadius.circular(50),
                                           color: Color(0xffF8F4EC),
                                         ),
                                         child: Icon(
@@ -261,8 +241,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                       ),
                                     ),
                                     Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           'Click here to create a job',
@@ -309,8 +288,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                         height: Get.height * 0.06,
                                         width: Get.width * 0.13,
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
+                                          borderRadius: BorderRadius.circular(50),
                                           color: Color(0xffF8F4EC),
                                         ),
                                         child: Icon(
@@ -320,8 +298,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                                       ),
                                     ),
                                     Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           'Click here to view jobs posted',

@@ -15,8 +15,8 @@ class SingleJobView extends GetView<SingleJobController> {
             return Scaffold(
                 appBar: AppBar(
                   title: Text(
-                    controller.SingleJobTitle.value,
-                    style: TextStyle(
+                    controller.pageTitle.value,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -26,7 +26,7 @@ class SingleJobView extends GetView<SingleJobController> {
                     onPressed: () {
                       Get.back();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios,
                       color: Colors.black,
                     ),
@@ -43,8 +43,7 @@ class SingleJobView extends GetView<SingleJobController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 60, horizontal: 20),
+                        padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
                         child: Container(
                           height: Get.height * 0.2,
                           width: Get.width * 0.9,
@@ -60,52 +59,50 @@ class SingleJobView extends GetView<SingleJobController> {
                               children: [
                                 CircleAvatar(
                                   radius: 30,
-                                  backgroundImage: AssetImage(
-                                    'assets/images/google.png',
-                                  ),
+                                  backgroundImage: NetworkImage(controller.company.value.logo.toString()),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
-                                  'Produc Designer',
-                                  style: TextStyle(
+                                  controller.job.value.title.toString(),
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Google',
-                                      style: TextStyle(
+                                      controller.company.value.username.toString(),
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 20,
                                     ),
                                     Text(
-                                      'New York, USA',
-                                      style: TextStyle(
+                                      controller.company.value.address.toString(),
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 20,
                                     ),
                                     Text(
-                                      '1 day ago',
-                                      style: TextStyle(
+                                      controller.company.value.phone.toString(),
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
@@ -128,29 +125,29 @@ class SingleJobView extends GetView<SingleJobController> {
                                 width: Get.width * 0.14,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Color(0xffFCE1AA),
+                                  color: const Color(0xffFCE1AA),
                                 ),
-                                child: Icon(
-                                  Icons.monetization_on_outlined,
+                                child: const Icon(
+                                  Icons.av_timer_sharp,
                                   color: Colors.black,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              Text(
-                                'Salary',
+                              const Text(
+                                'Job Type',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 14,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                '40-50k',
-                                style: TextStyle(
+                                controller.job.value.type.toString(),
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
@@ -167,27 +164,27 @@ class SingleJobView extends GetView<SingleJobController> {
                                   borderRadius: BorderRadius.circular(50),
                                   color: Color(0xffE2D3FE),
                                 ),
-                                child: Icon(
-                                  Icons.timer_outlined,
+                                child: const Icon(
+                                  Icons.group,
                                   color: Colors.black,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              Text(
-                                'Job Type',
+                              const Text(
+                                'Gender',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 14,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                'Part Time',
-                                style: TextStyle(
+                                controller.job.value.gender.toString(),
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
@@ -202,29 +199,29 @@ class SingleJobView extends GetView<SingleJobController> {
                                 width: Get.width * 0.14,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Color(0xffBAE5F5),
+                                  color: const Color(0xffBAE5F5),
                                 ),
-                                child: Icon(
-                                  Icons.chair_outlined,
+                                child: const Icon(
+                                  Icons.timelapse,
                                   color: Colors.black,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              Text(
-                                'Postion',
+                              const Text(
+                                'Ends in',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 14,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                'junior',
-                                style: TextStyle(
+                                controller.job.value.expiration.toString(),
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
@@ -234,11 +231,11 @@ class SingleJobView extends GetView<SingleJobController> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           'Job Description',
                           style: TextStyle(
@@ -251,15 +248,15 @@ class SingleJobView extends GetView<SingleJobController> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi eget nunc ultricies aliquet. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nisl vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nisl vitae nisl.',
-                          style: TextStyle(
+                          controller.job.value.description.toString(),
+                          style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
@@ -270,15 +267,14 @@ class SingleJobView extends GetView<SingleJobController> {
                           onPressed: () {
                             controller.applyJob();
                           },
-                          child: Text('Apply Now'),
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xff222222),
+                            backgroundColor: const Color(0xff222222),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            minimumSize:
-                                Size(Get.width * 0.9, Get.height * 0.07),
+                            minimumSize: Size(Get.width * 0.9, Get.height * 0.07),
                           ),
+                          child: const Text('Apply Now'),
                         ),
                       ),
                     ],

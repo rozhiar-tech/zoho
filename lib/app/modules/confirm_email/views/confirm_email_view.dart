@@ -15,10 +15,7 @@ class ConfirmEmailView extends GetView<ConfirmEmailController> {
             appBar: AppBar(
               title: const Text(
                 'Verify Email',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600),
+                style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
               ),
               elevation: 0,
               backgroundColor: Color(0xffF8F8F8),
@@ -31,17 +28,37 @@ class ConfirmEmailView extends GetView<ConfirmEmailController> {
                 children: [
                   Text(
                     controller.confirmEmailTitle.value,
-                    style:
-                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 255, 189, 74),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
                     onPressed: () {
                       controller.verifyEmail();
                     },
                     child: Text('I have verified my email'),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 255, 189, 74),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    onPressed: () {
+                      controller.resendEmail();
+                    },
+                    child: Text('Resend verification email'),
                   ),
                 ],
               ),

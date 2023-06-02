@@ -1,30 +1,35 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zoho/app/data/models/student_model.dart';
 
 class UserProfileController extends GetxController {
-  //TODO: Implement UserProfileController
+  
   RxString ProfileName = 'Profile'.obs;
 
   RxString email = ''.obs;
+  Rx<Student> student = Student().obs;
 
-  GetCvFromStorage() async {
-    Reference ref = FirebaseStorage.instance.ref().child('${email.value}/File');
-    String url = await ref.getDownloadURL();
-    return url;
-  }
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      email.value = user.email!;
-      print(email.value);
-      GetCvFromStorage();
+  getUserInfo() async {
+    // get the student object from shared preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var studentString = prefs.getString('student');
+    // check if the student object is null
+    if(studentString != null) {
+      student.value = Student.fromJson(jsonDecode(studentString));
+      return;
     }
 
+    Get.snackbar('Error', 'we could not find the student object'); 
+  }
+
+  @override
+  void onInit() {
     super.onInit();
+    getUserInfo();
   }
 
   @override
@@ -37,5 +42,4 @@ class UserProfileController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
 }
