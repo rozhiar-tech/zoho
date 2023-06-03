@@ -24,7 +24,10 @@ class CompanyHomeController extends GetxController {
     Get.toNamed(Routes.CREATE_JOB, arguments: company.value.companyId);
   }
 
-
+  void goToJobsPosted() {
+    print(jobs);
+    Get.toNamed(Routes.VIEW_JOBS, arguments: [jobs, company]);
+  }
 
   Future getCompanyInfo() async {
     // get company info from shared preference

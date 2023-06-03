@@ -39,12 +39,12 @@ class CreateJobView extends GetView<CreateJobController> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.only(top: 5.0, left: 10, right: 10, bottom: 5),
                     child: Form(
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 55, // set the desired height
+                            height: 75, // set the desired height
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: TextFormField(
@@ -62,7 +62,7 @@ class CreateJobView extends GetView<CreateJobController> {
                             ),
                           ),
                           SizedBox(
-                            height: 55, // set the desired height
+                            height: 75, // set the desired height
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: TextFormField(
@@ -80,7 +80,7 @@ class CreateJobView extends GetView<CreateJobController> {
                             ),
                           ),
                           SizedBox(
-                            height: 55, // set the desired height
+                            height: 75, // set the desired height
                             child: Padding(
                               padding: const EdgeInsets.only(left: 7.0),
                               child: TextFormField(
@@ -99,23 +99,23 @@ class CreateJobView extends GetView<CreateJobController> {
                             ),
                           ),
                           SizedBox(
-                            height: 55, // set the desired height
+                            height: 75, // set the desired height
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: DropdownButtonFormField(
-                                // value: controller.jobTypeController.value.text,
+                                // value: controller.jobTypeController.text,
                                 items: const [
                                   DropdownMenuItem(
-                                    value: 'Type 1',
-                                    child: Text('Type 1', style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
+                                    value: 'FullTime',
+                                    child: Text('FullTime', style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
                                   ),
                                   DropdownMenuItem(
-                                    value: 'Type 2',
-                                    child: Text('Type 2'),
+                                    value: 'PartTime',
+                                    child: Text('PartTime', style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
                                   ),
                                   DropdownMenuItem(
-                                    value: 'Type 3',
-                                    child: Text('Type 3'),
+                                    value: 'Remote',
+                                    child: Text('Remote', style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
                                   ),
                                 ],
                                 onChanged: (value) {
@@ -134,11 +134,28 @@ class CreateJobView extends GetView<CreateJobController> {
                             ),
                           ),
                           SizedBox(
-                            height: 55, // set the desired height
+                            height: 75, // set the desired height
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
-                              child: TextFormField(
-                                controller: controller.jobGenderController,
+                              child: DropdownButtonFormField(
+                                // value: controller.jobTypeController.text,
+                                items: const [
+                                  DropdownMenuItem(
+                                    value: 'male',
+                                    child: Text('male', style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'female',
+                                    child: Text('female', style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'both',
+                                    child: Text('both', style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
+                                  ),
+                                ],
+                                onChanged: (value) {
+                                  controller.jobGenderController.text = value.toString();
+                                },
                                 decoration: const InputDecoration(
                                   labelText: 'Gender',
                                   labelStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600),
@@ -152,7 +169,7 @@ class CreateJobView extends GetView<CreateJobController> {
                             ),
                           ),
                           SizedBox(
-                            height: 55, // set the desired height
+                            height: 75, // set the desired height
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: TextFormField(
@@ -170,15 +187,25 @@ class CreateJobView extends GetView<CreateJobController> {
                             ),
                           ),
                           SizedBox(
-                            height: 55, // set the desired height
+                            height: 75, // set the desired height
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
-                              child: TextFormField(
-                                controller: controller.jobDepartmentIdController,
+                              child: DropdownButtonFormField(
+                                // value: controller.jobTypeController.text,
+                                items: [
+                                  for (var item in controller.departments)
+                                    DropdownMenuItem(
+                                      value: item,
+                                      child: Text(item, style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600)),
+                                    ),
+                                ],
+                                onChanged: (value) {
+                                  controller.jobDepartmentIdController.text = value.toString();
+                                },
                                 decoration: const InputDecoration(
-                                  labelText: 'Department id',
+                                  labelText: 'Department',
                                   labelStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600),
-                                  hintText: 'Department id',
+                                  hintText: 'Department',
                                   hintStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w300),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: Colors.black),
@@ -188,7 +215,7 @@ class CreateJobView extends GetView<CreateJobController> {
                             ),
                           ),
                           Container(
-                            height: 190,
+                            height: controller.height.value,
                             padding: const EdgeInsets.only(top: 5.0, right: 5.0, bottom: 5.0),
                             decoration: const BoxDecoration(
                               color: Color.fromARGB(255, 230, 227, 227),
@@ -200,6 +227,7 @@ class CreateJobView extends GetView<CreateJobController> {
                                 return Padding(
                                   padding: const EdgeInsets.all(3.0),
                                   child: TextFormField(
+                                    controller: controller.controllers[index],
                                     decoration: InputDecoration(
                                       labelText: 'Question ${index + 1}',
                                       labelStyle: const TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w600),
@@ -248,6 +276,9 @@ class CreateJobView extends GetView<CreateJobController> {
                       ),
                     ),
                     child: const Text('Create Job'),
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                 ],
               ),

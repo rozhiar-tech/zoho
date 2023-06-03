@@ -15,10 +15,7 @@ class FilterPageView extends GetView<FilterPageController> {
               appBar: AppBar(
                 title: const Text(
                   'Filter',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600),
+                  style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                 ),
                 elevation: 0,
                 leading: IconButton(
@@ -69,13 +66,11 @@ class FilterPageView extends GetView<FilterPageController> {
                               ),
                               Expanded(
                                 child: TextField(
+                                  controller: controller.searchController,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: 'Search',
-                                    hintStyle: TextStyle(
-                                        color: Colors.grey,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600),
+                                    hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ),
@@ -88,12 +83,9 @@ class FilterPageView extends GetView<FilterPageController> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          'Category',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600),
+                        const Text(
+                          'Department',
+                          style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
                           height: 20,
@@ -109,20 +101,25 @@ class FilterPageView extends GetView<FilterPageController> {
                             child: DropdownButton<String>(
                               dropdownColor: Colors.white,
                               menuMaxHeight: Get.height * 0.3,
-                              value: controller.selectedCategory.value,
+                              hint: const Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                child: Text(
+                                  'Select Department',
+                                  style: TextStyle(color: Colors.grey, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
+                                ),
+                              ),
                               icon: const Icon(Icons.arrow_downward),
+                              value: controller.selectedDepartment.value,
                               iconSize: 24,
                               elevation: 16,
                               style: const TextStyle(color: Colors.black),
                               onChanged: (String? newValue) {
-                                controller.selectedCategory.value = newValue!;
+                                print(newValue);
+                                controller.selectedDepartment.value = newValue!;
                               },
-                              items: [
-                                'All',
-                                'Category 1',
-                                'Category 2',
-                                'Category 3'
-                              ].map<DropdownMenuItem<String>>((String value) {
+                              items: ['All', 'computer engineering', 'computer science', 'pharmacy', 'dentistry', ].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Padding(
@@ -131,10 +128,7 @@ class FilterPageView extends GetView<FilterPageController> {
                                     ),
                                     child: Text(
                                       value,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w600),
+                                      style: const TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 );
@@ -145,12 +139,9 @@ class FilterPageView extends GetView<FilterPageController> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          'Department',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600),
+                        const Text(
+                          'Gender',
+                          style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
                           height: 20,
@@ -166,22 +157,16 @@ class FilterPageView extends GetView<FilterPageController> {
                             child: DropdownButton<String>(
                               dropdownColor: Colors.white,
                               menuMaxHeight: Get.height * 0.3,
-                              value: controller.selectedDepartment.value,
+                              // value: controller.selectedDepartment.value,
                               icon: const Icon(Icons.arrow_downward),
                               iconSize: 24,
                               elevation: 16,
                               style: const TextStyle(color: Colors.black),
+                              // hint: const Text('Both'),
                               onChanged: (String? newValue) {
-                                // controller.selectedCategory.value = newValue!;
-
-                                controller.selectedDepartment.value = newValue!;
+                                // controller.selectedDepartment.value = newValue!;
                               },
-                              items: [
-                                'All',
-                                'Department 1',
-                                'Department 2',
-                                'Department 3'
-                              ].map<DropdownMenuItem<String>>((String value) {
+                              items: ['Both', 'male', 'female'].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Padding(
@@ -190,10 +175,7 @@ class FilterPageView extends GetView<FilterPageController> {
                                     ),
                                     child: Text(
                                       value,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w600),
+                                      style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 );
@@ -206,10 +188,7 @@ class FilterPageView extends GetView<FilterPageController> {
                         ),
                         Text(
                           'Salary',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600),
+                          style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
                           height: 20,
@@ -220,20 +199,14 @@ class FilterPageView extends GetView<FilterPageController> {
                               children: [
                                 Text(
                                   "Minimum Salary",
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600),
+                                  style: TextStyle(color: Colors.grey, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
                                   controller.minValue.value.toString() + "\$",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600),
+                                  style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                 )
                               ],
                             ),
@@ -242,20 +215,14 @@ class FilterPageView extends GetView<FilterPageController> {
                               children: [
                                 Text(
                                   "Maximum Salary",
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600),
+                                  style: TextStyle(color: Colors.grey, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
                                   controller.maxValue.value.toString() + "\$",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600),
+                                  style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                 )
                               ],
                             ),
@@ -289,10 +256,7 @@ class FilterPageView extends GetView<FilterPageController> {
                         ),
                         Text(
                           'Job Type',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600),
+                          style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
                           height: 20,
@@ -317,12 +281,7 @@ class FilterPageView extends GetView<FilterPageController> {
                                 // controller.selectedCategory.value = newValue!;
                                 controller.selectedJobType.value = newValue!;
                               },
-                              items: [
-                                'All',
-                                'Remote',
-                                'Part Time',
-                                'Full Time'
-                              ].map<DropdownMenuItem<String>>((String value) {
+                              items: ['All', 'Remote', 'Part Time', 'Full Time'].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Padding(
@@ -331,10 +290,7 @@ class FilterPageView extends GetView<FilterPageController> {
                                     ),
                                     child: Text(
                                       value,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w600),
+                                      style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 );
@@ -351,11 +307,7 @@ class FilterPageView extends GetView<FilterPageController> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              controller.getToFilteredJobs(
-                                controller.selectedCategory.value,
-                                controller.selectedDepartment.value,
-                                controller.selectedJobType.value,
-                              );
+                              controller.getToFilteredJobs(controller.selectedCategory.value, controller.selectedDepartment.value, controller.selectedJobType.value);
                             },
                             child: Text('Apply Filters'),
                             style: ElevatedButton.styleFrom(
@@ -363,8 +315,7 @@ class FilterPageView extends GetView<FilterPageController> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              minimumSize:
-                                  Size(Get.width * 0.9, Get.height * 0.07),
+                              minimumSize: Size(Get.width * 0.9, Get.height * 0.07),
                             ),
                           ),
                         ),

@@ -11,6 +11,7 @@ class CompanyProfileController extends GetxController {
   RxString company_logo = "".obs;
 
   companyDetails(company) {
+    company_text.value = company.username;
     company_name.value = company.username;
     company_email.value = company.email;
     company_phone.value = company.phone;

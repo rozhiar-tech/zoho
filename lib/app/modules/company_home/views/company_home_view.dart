@@ -332,9 +332,7 @@ class CompanyHomeView extends GetView<CompanyHomeController> {
                               height: 10,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                Get.toNamed('/view-jobs');
-                              },
+                              onTap: controller.goToJobsPosted,
                               child: Container(
                                 height: Get.height * 0.1,
                                 width: Get.width,
