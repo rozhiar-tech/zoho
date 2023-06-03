@@ -20,6 +20,8 @@ class HomeController extends GetxController {
   RxInt parttimeJobs = 0.obs;
   Rx<Student> student = Student().obs;
 
+  var fetchedCompanies = <CompanyModel>[];
+
   void drawerToogle() {
     isDrawerToogle.value = !isDrawerToogle.value;
   }
@@ -45,9 +47,13 @@ class HomeController extends GetxController {
 
     var myJobs = (json.decode(response.body) as List).map((e) => JobModel.fromJson(e)).toList();
 
+    var ids = myJobs.map((e) => e.companyId).toSet().toList();
+
+    await getCompaniesByIds(ids);
+
     // loop through the jobs and count the fulltime and parttime jobs
     for (var i = 0; i < myJobs.length; i++) {
-      var company = await getCompany(myJobs[i].companyId);
+      var company = fetchedCompanies.firstWhere((element) => element.companyId == myJobs[i].companyId);
       companies.add(company);
       if (myJobs[i].type == 'Fulltime') {
         fulltimeJobs.value++;
@@ -56,6 +62,18 @@ class HomeController extends GetxController {
       }
     }
     jobs.value = myJobs;
+  }
+
+  Future getCompaniesByIds(ids) async {
+    final response = await http.post(
+      Uri.parse('http://52.20.124.191:4000/api/company_by_ids'),
+      headers: {"content-type": "application/json"},
+      body: jsonEncode({
+        "ids": ids,
+      }),
+    );
+
+    fetchedCompanies = (json.decode(response.body) as List).map((e) => CompanyModel.fromJson(e)).toList();
   }
 
   getCompany(index) async {

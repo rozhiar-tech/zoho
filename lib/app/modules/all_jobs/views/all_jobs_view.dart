@@ -202,6 +202,7 @@ class AllJobsView extends GetView<AllJobsController> {
                     
                     },
                   ),
+                
                 ),
               ),
             ),

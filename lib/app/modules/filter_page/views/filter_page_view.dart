@@ -119,7 +119,7 @@ class FilterPageView extends GetView<FilterPageController> {
                                 print(newValue);
                                 controller.selectedDepartment.value = newValue!;
                               },
-                              items: ['All', 'computer engineering', 'computer science', 'pharmacy', 'dentistry', ].map<DropdownMenuItem<String>>((String value) {
+                              items: ['All', 'computer engineering', 'computer science', 'pharmacy', 'dentistry', 'civil', 'mls', 'business', 'english'].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Padding(
@@ -157,16 +157,16 @@ class FilterPageView extends GetView<FilterPageController> {
                             child: DropdownButton<String>(
                               dropdownColor: Colors.white,
                               menuMaxHeight: Get.height * 0.3,
-                              // value: controller.selectedDepartment.value,
+                              value: controller.selectedGender.value,
                               icon: const Icon(Icons.arrow_downward),
                               iconSize: 24,
                               elevation: 16,
                               style: const TextStyle(color: Colors.black),
-                              // hint: const Text('Both'),
                               onChanged: (String? newValue) {
-                                // controller.selectedDepartment.value = newValue!;
+                                // controller.selectedCategory.value = newValue!;
+                                controller.selectedGender.value = newValue!;
                               },
-                              items: ['Both', 'male', 'female'].map<DropdownMenuItem<String>>((String value) {
+                              items: ['All', 'male', 'female', 'both'].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Padding(
@@ -281,7 +281,7 @@ class FilterPageView extends GetView<FilterPageController> {
                                 // controller.selectedCategory.value = newValue!;
                                 controller.selectedJobType.value = newValue!;
                               },
-                              items: ['All', 'Remote', 'Part Time', 'Full Time'].map<DropdownMenuItem<String>>((String value) {
+                              items: ['All', 'Remote', 'Parttime', 'Fulltime'].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Padding(
@@ -307,7 +307,7 @@ class FilterPageView extends GetView<FilterPageController> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              controller.getToFilteredJobs(controller.selectedCategory.value, controller.selectedDepartment.value, controller.selectedJobType.value);
+                              controller.getToFilteredJobs(controller.selectedGender.value, controller.selectedDepartment.value, controller.selectedJobType.value);
                             },
                             child: Text('Apply Filters'),
                             style: ElevatedButton.styleFrom(
