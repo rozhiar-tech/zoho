@@ -170,7 +170,7 @@ class ViewJobsView extends GetView<ViewJobsController> {
                                         ),
                                         child: ElevatedButton(
                                           onPressed: () {
-                                            // controller.goToJobDetails(index);
+                                            controller.viewCandidates(index);
                                           },
                                           style: ElevatedButton.styleFrom(
                                             padding: const EdgeInsets.symmetric(horizontal: 10),

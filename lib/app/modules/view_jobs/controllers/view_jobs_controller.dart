@@ -10,6 +10,10 @@ class ViewJobsController extends GetxController {
   RxList<JobModel> jobs = <JobModel>[].obs;
   RxList<CompanyModel> companies = <CompanyModel>[].obs;
 
+  viewCandidates(index) {
+    Get.toNamed('/view-candidates', arguments: [jobs[index], companies[index]]);
+  }
+
   @override
   void onInit() async {
     super.onInit();
